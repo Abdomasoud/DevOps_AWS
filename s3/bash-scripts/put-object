@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+
+# exit if any command returns a non-zero status
+set -e
+
+rm -r
+
+OUTPUT_DIR="/tmp/s3-bash-scripts"
+
+rm -r $OUTPUT_DIR
+
+mkdir -p $OUTPUT_DIR
+
+
+NUM_FILES=$((RANDOM % 6 + 5))
+
+
+for i in $(seq 1 $NUM_FILES); do
+  echo "This is file $i" > $OUTPUT_DIR/file$i.txt
+  echo "Uploading file$i.txt"
+
+done
+
+
+echo "uploading files to s3"
