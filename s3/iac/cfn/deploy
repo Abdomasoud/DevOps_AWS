@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+echo "deploying cfn templates to s3 bucket"
+
+aws cloudformation deploy --template-file template.yaml --stack-name "cfn-s3-simple"

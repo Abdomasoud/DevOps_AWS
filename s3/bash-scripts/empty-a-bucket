@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+if [ -z "$1" ]; then
+  echo "Bucket name is required"
+  exit 1
+fi
+
+aws s3 rm s3://$1 --recursive

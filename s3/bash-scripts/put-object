@@ -4,11 +4,12 @@
 # exit if any command returns a non-zero status
 set -e
 
-rm -r
 
 OUTPUT_DIR="/tmp/s3-bash-scripts"
 
-rm -r $OUTPUT_DIR
+if [ -d "$OUTPUT_DIR" ]; then
+  rm -r $OUTPUT_DIR
+fi
 
 mkdir -p $OUTPUT_DIR
 
@@ -24,3 +25,8 @@ done
 
 
 echo "uploading files to s3"
+
+
+for file in $OUTPUT_DIR/*; do
+  aws s3 cp $file s3://$1/
+done
